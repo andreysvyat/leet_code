@@ -13,8 +13,13 @@ repositories {
     mavenCentral()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "21"
+tasks.test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
+    testImplementation(kotlin("test"))
 }
 
 application {
