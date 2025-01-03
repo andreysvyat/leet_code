@@ -1,5 +1,6 @@
 package count_vowel_strings_in_ranges
 
+import arrayAssertionMessage
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Disabled
@@ -31,7 +32,7 @@ class SolutionKtTest {
         assertNotNull(queries)
 
         val result = vowelStrings(words, queries)
-        assertArrayEquals(expect, result, "\n${expect.contentToString()}\n${result.contentToString()}\n")
+        assertArrayEquals(expect, result, arrayAssertionMessage(expect, result))
     }
 
     @Test
@@ -43,7 +44,7 @@ class SolutionKtTest {
 
         val expect = intArrayOf(2, 3, 0)
         assertArrayEquals(
-            expect, result, "\n${expect.contentToString()}\n${result.contentToString()}\n")
+            expect, result, arrayAssertionMessage(expect, result))
     }
 
     @Test
@@ -54,7 +55,7 @@ class SolutionKtTest {
         )
 
         val expect = intArrayOf(2, 3, 0, 1)
-        assertArrayEquals(expect, result, "\n${expect.contentToString()}\n${result.contentToString()}\n")
+        assertArrayEquals(expect, result, arrayAssertionMessage(expect, result))
     }
 
     @Test
@@ -71,6 +72,6 @@ class SolutionKtTest {
 
         val result = calculatePrefixes(arrayOf("aba", "bcb", "ece", "aa", "e"))
 
-        assertArrayEquals(expect, result, "\n${expect.contentToString()}\n${result.contentToString()}\n")
+        assertArrayEquals(expect, result, arrayAssertionMessage(expect, result))
     }
 }
