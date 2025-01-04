@@ -20,6 +20,7 @@ tasks.test {
 dependencies {
     testImplementation("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
     testImplementation(kotlin("test"))
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.1.0")
 }
 
 application {
