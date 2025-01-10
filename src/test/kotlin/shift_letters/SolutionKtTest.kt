@@ -14,8 +14,6 @@ import org.junit.jupiter.params.shadow.com.univocity.parsers.csv.CsvParserSettin
 import java.util.stream.Stream
 import kotlin.test.assertEquals
 
-val MAPPER = ObjectMapper()
-
 class SolutionKtTest {
 
     companion object {
@@ -50,7 +48,7 @@ class SolutionKtTest {
     @MethodSource("getParamsFromResources")
     fun shiftingLettersTest(
         s: String,
-        @ConvertWith(ShiftsConverter::class) shifts: Array<IntArray>,
+        @ConvertWith(JsonConverter::class) shifts: Array<IntArray>,
         expect: String,
         index: Int
     ) {
@@ -122,8 +120,9 @@ class SolutionKtTest {
     }
 }
 
-class ShiftsConverter : SimpleArgumentConverter() {
+val MAPPER = ObjectMapper()
 
+class JsonConverter : SimpleArgumentConverter() {
     override fun convert(source: Any?, targetType: Class<*>?): Any {
         return MAPPER.readValue(source?.toString() ?: "", Array<IntArray>::class.java)
     }

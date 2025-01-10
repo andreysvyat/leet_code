@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "2.1.0"
     application
@@ -18,7 +16,7 @@ tasks.test {
 }
 
 dependencies {
-    testImplementation("com.fasterxml.jackson.core:jackson-databind:2.13.4.2")
+    testImplementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.18.2")
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.1.0")
 }
