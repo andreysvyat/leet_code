@@ -67,7 +67,7 @@ class MySolution {
         return false
     }
 }
-internal class Solution {
+class Solution {
     fun isPalindrome(head: ListNode?): Boolean {
         if (head?.next == null) return true
 
