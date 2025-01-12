@@ -22,13 +22,7 @@ class ListNode(
     }
 
     override fun toString(): String {
-        var current = this
-        var str = ""
-        while (current.next != null) {
-            str += current.`val`.toString()
-            current = current.next!!
-        }
-        return str + current.`val`.toString()
+        return "${`val`} -> ${next.toString()}"
     }
 }
 
