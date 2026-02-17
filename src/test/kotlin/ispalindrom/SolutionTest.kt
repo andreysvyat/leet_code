@@ -1,6 +1,8 @@
 package ispalindrom
 
+import kotlin.random.Random
 import kotlin.test.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -26,7 +28,7 @@ class SolutionTest {
         val head = intArrayOf(
             1, 2, 2, 1, 5, 7, 5, 3, 8, 9, 0, 6, 5, 9, 6, 9, 2, 1, 3, 0, 8, 8, 4, 8, 9, 0, 3, 5, 6, 8, 9, 0, 1, 2,
             2, 1, 0, 9, 8, 6, 5, 3, 0, 9, 8, 4, 8, 8, 0, 3, 1, 2, 9, 6, 9, 5, 6, 0, 9, 8, 3, 5, 7, 5, 1, 2, 2, 1
-        ).toHead()
+        ).apply { println(this.size) }.toHead()
         assertTrue { Solution().isPalindrome(head) }
     }
 
@@ -51,9 +53,33 @@ class SolutionTest {
     @Test
     fun testIsPalindromeCase4() {
         val head = intArrayOf(
-            1, 2, 3, 4, 2, 1
+            1, 2, 3, 3, 2, 1
         ).toHead()
-        assertFalse { Solution().isPalindrome(head) }
+        assertTrue { Solution().isPalindrome(head) }
+    }
+
+    @Test
+    fun testVeryLongCase(){
+        val left = IntArray(4999) { Random.nextInt(0, 10) }
+        val right = left.reversedArray()
+
+        val head = left.plus(right).toHead()
+        assertTrue { Solution().isPalindrome(head) }
+    }
+
+    @Test
+    fun testReverse(){
+        val testHead = intArrayOf(1, 2, 3, 4, 5, 6).toHead()
+        val reversed = Solution().reverse(testHead)
+        val expected = intArrayOf(6, 5, 4, 3, 2).toHead()
+        assertEquals(expected, reversed)
+    }
+
+    @Test
+    fun testToString(){
+        val testHead = intArrayOf(1, 2, 3, 4, 5, 6).toHead()
+        val expected = "1->2->3->4->5->6"
+        assertEquals(expected, testHead.toString())
     }
 }
 
