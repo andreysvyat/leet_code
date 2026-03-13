@@ -1,30 +1,6 @@
 package ispalindrom
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-    override fun toString(): String {
-        var curr = this
-        var str = curr.`val`.toString()
-        while (curr.next != null) {
-            str += "->${curr.next?.`val`}"
-            curr = curr.next!!
-        }
-        return str
-    }
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-        var pA: ListNode? = this
-        var pB = other as ListNode?
-        while (pB != null) {
-            if(pA?.`val` != pB.`val`) return false
-            pA = pA.next
-            pB = pB.next
-        }
-        return true
-    }
-    override fun hashCode(): Int {return `val`.hashCode()}
-}
+import common.ListNode
 
 class Solution {
     fun isPalindrome(head: ListNode?): Boolean {

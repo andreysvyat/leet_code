@@ -1,5 +1,6 @@
 package linked_list_cycle
 
+import common.ListNode
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 

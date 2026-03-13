@@ -1,5 +1,7 @@
 package linked_list_cycle
 
+import common.ListNode
+
 fun hasCycle(head: ListNode?): Boolean {
     var slow = head
     var fast = head
@@ -11,15 +13,4 @@ fun hasCycle(head: ListNode?): Boolean {
         }
     }
     return false
-}
-
-data class ListNode(
-    var `val`: Int,
-    var next: ListNode?
-){
-    constructor(`val`: Int): this(`val`, null)
-
-    override fun toString(): String {
-        return "${`val`}"
-    }
 }

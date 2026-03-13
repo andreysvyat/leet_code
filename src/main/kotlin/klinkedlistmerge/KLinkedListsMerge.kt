@@ -1,5 +1,7 @@
 package klinkedlistmerge
 
+import common.ListNode
+
 fun main() {
 	Solution().printMerges()
 	testMergeKLlist()
@@ -15,22 +17,6 @@ fun testMergeKLlist() {
 			)
 		)
 	)
-}
-
-class ListNode(var `val`: Int) {
-	var next: ListNode? = null
-
-	override fun toString() = with(this) {
-		if (next == null)
-			return@with "$`val`"
-		var res = "$`val`->"
-		var curr = next!!
-		while (!curr.isLast()) {
-			res = "$res${curr.`val`}->"
-			curr = curr.next!!
-		}
-		"$res${curr.`val`}"
-	}
 }
 
 class Solution {

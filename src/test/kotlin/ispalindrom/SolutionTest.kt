@@ -1,5 +1,6 @@
 package ispalindrom
 
+import toHead
 import kotlin.random.Random
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -81,13 +82,4 @@ class SolutionTest {
         val expected = "1->2->3->4->5->6"
         assertEquals(expected, testHead.toString())
     }
-}
-
-fun IntArray.toHead(): ListNode {
-    val nodes = this.map { ListNode(it) }
-    nodes.reduce { acc, current ->
-        acc.next = current
-        return@reduce current
-    }
-    return nodes[0]
 }
