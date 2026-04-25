@@ -110,6 +110,17 @@ class SplitterByDictionaryTest {
         assertEquals(exp, act)
     }
 
+    @Test
+    fun getSentenceWithSpacesPathologicalExponentialCase() {
+        // "aaaa...a" (30 штук) + "b". Словарь — все строки из 'a' длины 1..10.
+        // Валидного разбиения не существует ('b' вне словаря), но из-за отсутствия
+        // мемоизации рекурсия перебирает ~2^30 разбиений префикса из 'a' — уйдёт в минуты.
+        val sentence = "a".repeat(30)
+        val dictionary = (1..10).map { "a".repeat(it) }.toTypedArray()
+        val splitter = newDictionary(sentence, dictionary)
+        splitter.getSentenceWithSpaces()
+    }
+
     @RepeatedTest(1000)
     fun getSentenceWithSpacesForBigDictionary() {
         val dict = Array(2000) { getRandomString(Random.nextInt(3, 20)) }.distinct().toTypedArray()
