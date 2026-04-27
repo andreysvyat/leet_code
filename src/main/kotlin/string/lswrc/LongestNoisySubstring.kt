@@ -1,23 +1,29 @@
 package string.lswrc
 
+import kotlin.math.max
+
 class LongestNoisySubstring(private val input: String) {
     fun getLength(): Int {
-        val charSet = mutableSetOf<Char>()
-        var maxLen = 0
+        if (input.length <= 1) {
+            return input.length
+        }
+        val lastOccurrences = HashMap<Char, Int>()
+        var maxLen = 1
         var lPointer = 0
         var rPointer = 0
         while (rPointer < input.length) {
-            val len = rPointer - lPointer
+            val current = input[rPointer]
+            val lastPosition = lastOccurrences.getOrDefault(current, -1)
+            if (lastPosition >= lPointer) {
+                lPointer = lastPosition + 1
+            }
+            val len = rPointer - lPointer + 1
             if (len > maxLen) {
                 maxLen = len
             }
-            if (charSet.contains(input[rPointer])) {
-                lPointer = rPointer
-            } else {
-                charSet.add(input[rPointer])
-            }
+            lastOccurrences[input[rPointer]] = rPointer
             rPointer++
         }
-        return maxLen
+        return max(maxLen, rPointer - lPointer)
     }
 }
